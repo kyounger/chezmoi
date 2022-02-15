@@ -934,8 +934,14 @@ func (c *Config) defaultTemplateData() map[string]interface{} {
 			Msg("chezmoi.Kernel")
 	}
 
+	osID := runtime.GOOS
 	var osRelease map[string]interface{}
 	if rawOSRelease, err := chezmoi.OSRelease(c.baseSystem); err == nil {
+		if id, ok := rawOSRelease["ID"]; ok {
+			if idStr, ok := id.(string); ok {
+				osID = runtime.GOOS + "-" + idStr
+			}
+		}
 		osRelease = upperSnakeCaseToCamelCaseMap(rawOSRelease)
 	} else {
 		c.logger.Info().
@@ -958,6 +964,7 @@ func (c *Config) defaultTemplateData() map[string]interface{} {
 			"hostname":     hostname,
 			"kernel":       kernel,
 			"os":           runtime.GOOS,
+			"osID":         osID,
 			"osRelease":    osRelease,
 			"sourceDir":    c.SourceDirAbsPath.String(),
 			"username":     username,
