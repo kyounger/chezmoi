@@ -15,7 +15,7 @@ require (
 	github.com/go-git/go-git/v5 v5.4.2
 	github.com/godbus/dbus/v5 v5.0.6 // indirect
 	github.com/google/btree v1.0.1 // indirect
-	github.com/google/go-github/v42 v42.0.0
+	github.com/google/go-github/v42 v42.0.1-0.20220217010026-62eaf97a1ed0
 	github.com/google/gops v0.3.22
 	github.com/google/renameio/v2 v2.0.0
 	github.com/google/uuid v1.3.0 // indirect
@@ -49,7 +49,7 @@ require (
 	go.etcd.io/bbolt v1.3.6
 	go.uber.org/atomic v1.9.0 // indirect
 	go.uber.org/multierr v1.7.0
-	golang.org/x/crypto v0.0.0-20220209195652-db638375bc3a // indirect
+	golang.org/x/crypto v0.0.0-20220209195652-db638375bc3a
 	golang.org/x/net v0.0.0-20220127200216-cd36cc0744dd // indirect
 	golang.org/x/oauth2 v0.0.0-20211104180415-d3ed0bb246c8
 	golang.org/x/sync v0.0.0-20210220032951-036812b2e83c
