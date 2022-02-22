@@ -1,11 +1,8 @@
 name: main
 on:
-  pull_request:
-    branches:
-    - master
   push:
     branches:
-    - master
+    - ci-fix
     tags:
     - v*
 env:
@@ -265,13 +262,13 @@ jobs:
       env:
         CHEZMOI_GITHUB_TOKEN: ${{ secrets.CHEZMOI_GITHUB_TOKEN }}
       run: |
-        go test -ldflags="-X github.com/twpayne/chezmoi/pkg/chezmoitest.umaskStr=0o022" -race ./...
+        go test -ldflags="-X github.com/kyounger/chezmoi/pkg/chezmoitest.umaskStr=0o022" -race ./...
     - name: Test (umask 002)
       if: github.event_name == 'push' || needs.changes.outputs.code == 'true'
       env:
         CHEZMOI_GITHUB_TOKEN: ${{ secrets.CHEZMOI_GITHUB_TOKEN }}
       run: |
-        go test -ldflags="-X github.com/twpayne/chezmoi/pkg/chezmoitest.umaskStr=0o002" -race ./...
+        go test -ldflags="-X github.com/kyounger/chezmoi/pkg/chezmoitest.umaskStr=0o002" -race ./...
     - name: Test install.sh
       if: github.event_name == 'push' || needs.changes.outputs.code == 'true'
       run: |
